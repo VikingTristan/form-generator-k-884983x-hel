@@ -3,14 +3,37 @@ import {
   businessAddress,
   invoiceAddress,
 } from './fieldsets'
-const forms = [
-  {
-    service: 'Checkout',
-    countryName: 'Sweden',
-    partner: 'Viking Gruppen',
-    to: '',
-    fieldsets: [companyInformation, businessAddress, invoiceAddress],
+
+import createCompanyLookup from './steps/company-lookup'
+
+const checkoutNO = {
+  service: 'Checkout',
+  country: {
+    code: 'NO',
+    name: 'Norway',
   },
+  partner: '',
+  path: '/no/checkout',
+  fieldsets: [companyInformation, businessAddress, invoiceAddress],
+}
+const checkoutSE = {
+  service: 'Checkout',
+  country: {
+    code: 'SE',
+    name: 'Sweden',
+  },
+  partner: '',
+  path: '/se/checkout',
+  fieldsets: [companyInformation, businessAddress, invoiceAddress],
+}
+
+const companyLookupForms = [
+  createCompanyLookup('NO'),
+  createCompanyLookup('SE'),
 ]
 
-module.exports = forms
+export { checkoutNO, checkoutSE, companyLookupForms }
+
+const forms = [checkoutNO, checkoutSE]
+
+export default forms

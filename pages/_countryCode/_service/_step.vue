@@ -25,7 +25,7 @@ export default {
   },
   asyncData({ params }) {
     return {
-      language: params.language,
+      countryCode: params.countryCode,
       service: params.service,
     }
   },

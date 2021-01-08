@@ -1,5 +1,8 @@
+// const forms = require('../data/forms')
+import forms from '../data/forms'
+
+import { companyLookupForms } from '../data/forms'
 const { Router } = require('express')
-const forms = require('../data/forms')
 
 const router = Router()
 
@@ -15,9 +18,15 @@ router.get('/forms', function (req, res, next) {
 })
 
 /* GET form by ... service? formId?. */
-router.get('/forms/:formId', function (req, res, next) {
-  const formId = req.params.formId
-  const form = forms.find((form) => form.formId === formId)
+router.get('/forms/:countryCode/:service', function (req, res, next) {
+  console.log('Router /forms/:countryCode/:service ran', req.params)
+  const { countryCode, service } = req.params
+  const form = companyLookupForms.find(
+    (form) =>
+      form.country.code.toLowerCase() === countryCode.toLowerCase() &&
+      form.service.toLowerCase() === service.toLowerCase()
+  )
+  console.log('Did server find a form?', form)
   if (form) {
     setTimeout(() => {
       res.json(form)

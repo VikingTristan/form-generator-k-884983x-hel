@@ -4,14 +4,17 @@
       <div class="col-12 d-flex justify-content-center align-items-center p-5">
         <h1>form-generator-k-884983x-hel</h1>
       </div>
-      <div class="col-12 d-flex justify-content-center">
+      <div class="col-12 justify-content-center d-flex">
+        <h2>Available forms</h2>
+      </div>
+      <div class="col-12 d-flex justify-content-center text-align-center">
         <NuxtLink
-          v-for="link in links"
-          :key="link.to"
+          v-for="form in forms"
+          :key="form.path"
           class="btn btn-lg btn-primary m-5"
-          :to="link.to"
+          :to="form.path"
         >
-          {{ link.text }}
+          {{ form.service }} {{ form.country.code }}
         </NuxtLink>
       </div>
     </div>
@@ -26,21 +29,12 @@ export default {
   },
   data() {
     return {
-      links: [
-        {
-          to: 'no/checkout',
-          text: 'Checkout NO',
-        },
-        {
-          to: 'se/checkout',
-          text: 'Checkout SE',
-        },
-      ],
+      forms: [],
     }
   },
-  async mounted() {
+  async fetch() {
     try {
-      this.schema = await this.$axios.$get('/forms')
+      this.forms = await this.$axios.$get('/forms')
     } catch (e) {
       console.log('Error I guess', e)
     }
