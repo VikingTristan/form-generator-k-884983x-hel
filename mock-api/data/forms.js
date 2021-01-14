@@ -1,39 +1,28 @@
 import {
-  companyInformation,
-  businessAddress,
-  invoiceAddress,
-} from './fieldsets'
-
-import createCompanyLookup from './steps/company-lookup'
-
-const checkoutNO = {
-  service: 'Checkout',
-  country: {
-    code: 'NO',
-    name: 'Norway',
-  },
-  partner: '',
-  path: '/no/checkout',
-  fieldsets: [companyInformation, businessAddress, invoiceAddress],
-}
-const checkoutSE = {
-  service: 'Checkout',
-  country: {
-    code: 'SE',
-    name: 'Sweden',
-  },
-  partner: '',
-  path: '/se/checkout',
-  fieldsets: [companyInformation, businessAddress, invoiceAddress],
-}
+  createCompanyLookupForm,
+  createCompanyStructureForm,
+  createRegistrationForm,
+} from './steps'
 
 const companyLookupForms = [
-  createCompanyLookup('NO'),
-  createCompanyLookup('SE'),
+  createCompanyLookupForm('NO', 'checkout'),
+  createCompanyLookupForm('SE', 'checkout'),
 ]
 
-export { checkoutNO, checkoutSE, companyLookupForms }
+const registrationForms = [
+  createRegistrationForm('NO', 'checkout'),
+  createRegistrationForm('SE', 'checkout'),
+]
 
-const forms = [checkoutNO, checkoutSE]
+const companyStructureForms = [
+  createCompanyStructureForm('NO', 'checkout'),
+  createCompanyStructureForm('SE', 'checkout'),
+]
 
-export default forms
+const forms = [
+  ...companyLookupForms,
+  ...registrationForms,
+  ...companyStructureForms,
+]
+
+export { forms, companyLookupForms, registrationForms, companyStructureForms }

@@ -1,6 +1,6 @@
-import companyLookupFieldset from '../fieldsets/company-lookup'
-const createCompanyLookup = (countryCode) => {
-  let country, path
+import { companyLookupFieldset } from '../fieldsets'
+const createCompanyLookupForm = (countryCode, service) => {
+  let country, path, step
 
   switch (countryCode) {
     case 'NO':
@@ -9,6 +9,10 @@ const createCompanyLookup = (countryCode) => {
         name: 'Norway',
       }
       path = '/no/checkout/firmaoppslag'
+      step = {
+        id: 'company-lookup',
+        name: 'firmaoppslag',
+      }
       break
     case 'SE':
       country = {
@@ -16,6 +20,10 @@ const createCompanyLookup = (countryCode) => {
         name: 'Sweden',
       }
       path = '/se/checkout/företagssökning'
+      step = {
+        id: 'company-lookup',
+        name: 'företagssökning',
+      }
       break
     default:
       country = {
@@ -23,15 +31,20 @@ const createCompanyLookup = (countryCode) => {
         name: 'Norway',
       }
       path = '/no/checkout/firmaoppslag'
+      step = {
+        id: 'company-lookup',
+        name: 'firmaoppslag',
+      }
       break
   }
   return {
-    service: 'Checkout',
+    service,
     partner: '',
     country,
     path,
+    step,
     fieldsets: [companyLookupFieldset(countryCode)],
   }
 }
 
-export default createCompanyLookup
+export default createCompanyLookupForm

@@ -3,9 +3,9 @@ const companyLookupFieldset = (countryCode) => {
     legend: countryCode === 'NO' ? 'Firmaoppslag' : 'Företagssökning',
     fields: [
       {
-        id: 'company-lookup',
+        id: 'company-name',
         label: countryCode === 'NO' ? 'Firmanavn' : 'Företagssnamn',
-        as: 'input',
+        as: 'text',
       },
     ],
   }

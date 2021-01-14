@@ -1,20 +1,26 @@
-export default {
-  legend: 'Faktureringsadresse',
-  fields: [
-    {
-      id: 'invoice-address',
-      label: 'Adresse',
-      as: 'input',
-    },
-    {
-      id: 'invoice-postal-code',
-      label: 'Postnummer',
-      as: 'input',
-    },
-    {
-      id: 'invoice-city',
-      label: 'Poststed',
-      as: 'input',
-    },
-  ],
+const invoiceAddressFieldset = () => {
+  return {
+    legend: 'Faktureringsadresse',
+    fields: [
+      {
+        id: 'invoice-address',
+        label: 'Adresse',
+        as: 'text',
+      },
+      {
+        id: 'invoice-postal-code',
+        label: 'Postnummer',
+        class: 'col-md-6',
+        as: 'postal-code',
+      },
+      {
+        id: 'invoice-city',
+        label: 'Poststed',
+        class: 'col-md-6',
+        as: 'text',
+      },
+    ],
+  }
 }
+
+export default invoiceAddressFieldset

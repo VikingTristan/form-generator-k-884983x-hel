@@ -1,5 +1,13 @@
-import companyInformation from './company-information'
-import businessAddress from './business-address'
-import invoiceAddress from './invoice-address'
+import companyLookupFieldset from './company-lookup'
+import companyInformationFieldset from './company-information'
+import businessAddressFieldset from './business-address'
+import invoiceAddressFieldset from './invoice-address'
+import ownerFieldset from './owner'
 
-export { companyInformation, businessAddress, invoiceAddress }
+export {
+  companyLookupFieldset,
+  companyInformationFieldset,
+  businessAddressFieldset,
+  invoiceAddressFieldset,
+  ownerFieldset,
+}
